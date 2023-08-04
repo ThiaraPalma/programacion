@@ -29,7 +29,9 @@ import { FooterComponent } from './components/footer/footer.component';
   exports:[
     MatIconModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    NavbarComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }
