@@ -9,8 +9,13 @@ import { RegisterComponent } from './register/register.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-
 import {MatButtonModule} from '@angular/material/button';
+
+//FORMULARIO
+import { FormsModule } from '@angular/forms';
+
+//servicios
+import { AuthService } from './services/auth.service'; //
 
 
 @NgModule({
@@ -24,13 +29,16 @@ import {MatButtonModule} from '@angular/material/button';
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule
   ],
   exports:[
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
-    MatButtonModule
-  ]
+    MatButtonModule,
+    FormsModule
+  ],
+  providers: [AuthService] //proveedor
 })
 export class AuthModule { }
