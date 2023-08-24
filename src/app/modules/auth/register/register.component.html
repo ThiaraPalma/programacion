@@ -1,7 +1,9 @@
 <div class="container">
     <div class="row">
         <h1>Registrate</h1>
+
         <i class="material-icons" style="font-size: 200px;">person</i>
+
         <mat-form-field appearance="fill">
             <mat-label>Ingrese un nombre de usuario:</mat-label>
             <input [(ngModel)]="usuarios.nombre" matInput required="">
@@ -9,12 +11,17 @@
 
         <mat-form-field>
             <mat-label>Ingrese una contraseña:</mat-label>
-            <input [(ngModel)]="usuarios.contrasena" [type]="hide ? 'password' : 'text'" required>
+
+            <input [(ngModel)]="usuarios.contrasena" [type]="hide ? 'password' : 'text'"  #input minlength="6" required>
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
-        </mat-form-field>
+
+            <mat-hint align="start">Minimo:6/{{input.value.length}}</mat-hint>
+        </mat-form-field> 
+        
+        
 
         <button class="boton" mat-raised-button color="primary" (click)="registrarse()">Registrar</button>
         
