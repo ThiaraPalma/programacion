@@ -15,6 +15,11 @@ const routes: Routes = [
   {
      path:"",loadChildren:()=>import('./modules/auth/auth.module').then(m=>m.AuthModule)
   }
+  //PATH -> palabra reservada para la ruta en si
+  //LOADCHILDREN -> CARGA PEREZOSA
+  //FUNCION IMPORTADA RUTA ESPECIFICA DEL MODULO
+  //METADATI THEN    -> PROMETE UN RESULTADO
+ // -> M PALABRA RESERVADA DEL   
 ];
 
 @NgModule({
