@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Usuario } from 'src/app/models/usuario';
+import { FirestoreService } from 'src/app/shared/services/firestore.services';
 
 @Component({
   selector: 'app-register',
@@ -11,8 +12,11 @@ export class RegisterComponent {
     hide = true; //input de contraseña
 
     //definimos de forma publica el servicioAuth
-    constructor (public servicioAuth: AuthService){}
-
+    constructor (
+      public servicioAuth: AuthService,
+      public servicioFirestore: FirestoreService
+      ){}
+       
     //importacion del modulo
     usuarios: Usuario = {
       uid: '',
@@ -20,7 +24,9 @@ export class RegisterComponent {
       contrasena: ''
     
     }
-    
+     uid= '';
+     coleccionUsuarios: Usuario[] = [];
+  
 
     //tomando nuevo registro
     // async = ASINCRONICO
@@ -39,8 +45,24 @@ export class RegisterComponent {
     .catch(error => 
       alert("Hubo un error al crear el usuario :(  \n" + error)
       )
+    //creamos constante UID para el UID que obtengamos
+    const uid = await this.servicioAuth.getUid();
     
-    //guarda respuesta
-    console.log(res)
+    //referenciamos el uid nuevo con el de usuario
+    this.usuarios.uid = uid;
+
+    //llamamos funcion guardarUser
+    this.guardaUser();
+  }
+
+  //funcion asincronica para guardar usuarios 
+  async guardaUser(){
+    this.servicioFirestore.agregarUsuario(this.usuarios, this.usuarios.uid)
+    .then(res =>{
+      console.log(this.usuarios);
+    })
+    .catch(error => {
+      console.log('Error =>', error);
+    })
   }
 }

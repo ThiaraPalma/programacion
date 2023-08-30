@@ -40,6 +40,6 @@ import { AuthService } from './services/auth.service'; //
     MatButtonModule,
     FormsModule
   ],
-  providers: [AuthService] //proveedor
+  providers: [AuthService] //proveedor de servicio
 })
 export class AuthModule { }
