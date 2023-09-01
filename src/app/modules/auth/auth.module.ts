@@ -10,6 +10,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
 
 //FORMULARIO
 import { FormsModule } from '@angular/forms';
@@ -31,14 +32,16 @@ import { AuthService } from './services/auth.service'; //
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule
   ],
   exports:[
     MatIconModule,
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule
   ],
   providers: [AuthService] //proveedor de servicio
 })
