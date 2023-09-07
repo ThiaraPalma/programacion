@@ -14,7 +14,7 @@
        <!--USUARIO-->
         <mat-form-field appearance="fill">
             <mat-label>Ingrese un email de usuario:</mat-label>
-            <input [(ngModel)]="usuarios.nombre" matInput required="">
+            <input [(ngModel)]="usuarios.email" matInput required="">
         </mat-form-field>
 
          <!--ROL-->
@@ -37,10 +37,9 @@
             </button>
 
          <mat-hint align="start">Minimo:6/{{input.value.length}}</mat-hint>
-        </mat-form-field> 
+         </mat-form-field> 
         
-        
-         
+
         <button class="boton" mat-raised-button color="primary" (click)="registrarse()">Registrar</button>
         
     </div>

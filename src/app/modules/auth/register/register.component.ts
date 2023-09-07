@@ -25,7 +25,7 @@ export class RegisterComponent {
     usuarios: Usuario = {
       uid: '',
       nombre1: '',
-      nombre: '',
+      email: '',
       rol: '',
       contrasena: ''
     
@@ -38,10 +38,10 @@ export class RegisterComponent {
     // async = ASINCRONICO
    async registrarse(){
     const credenciales ={
-      nombre: this.usuarios.nombre,
+      email: this.usuarios.email,
       contrasena: this.usuarios.contrasena
     };
-    const res = await this.servicioAuth.registrar(credenciales.nombre,credenciales.contrasena)
+    const res = await this.servicioAuth.registrar(credenciales.email,credenciales.contrasena)
     //metdo THEN devuelve misma promesa
     .then(res=>{
       alert("Ha agregado un nuevo usuario con exito:) ")
@@ -73,4 +73,10 @@ export class RegisterComponent {
       console.log('Error =>', error);
     })
   }
+
+  async ngOninit(){
+    const uid = await this.servicioAuth.getUid();
+    console.log(uid);
+  }
+  
 }

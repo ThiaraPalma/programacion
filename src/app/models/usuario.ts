@@ -1,8 +1,8 @@
 export interface Usuario {
 
-    uid: string | any; // id para Firebase
+    uid: string | any; // id para Firebase o auntentificacion
     nombre1: string; // -> nombre
-    nombre: string // -> email
-    rol: string;
+    email: string;// -> email
+    rol: string; // -> roles
     contrasena: string;
 }
