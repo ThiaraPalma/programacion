@@ -8,9 +8,11 @@ import { AppRoutingModule } from '../app-routing.module';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import{MatButtonModule} from '@angular/material/button';
+import {MatMenuModule} from '@angular/material/menu';
 //COMPONENTES 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+
 
 @NgModule({
   declarations: [
@@ -24,14 +26,16 @@ import { FooterComponent } from './components/footer/footer.component';
     //MATERIAL
     MatIconModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatMenuModule
   ],
   exports:[
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    MatMenuModule
   ]
 })
 export class SharedModule { }

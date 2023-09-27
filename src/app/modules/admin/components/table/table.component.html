@@ -1,56 +1,92 @@
-
 <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Imagen</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Descripcion</th>
-        <th scope="col">Precio</th>
-        <th scope="col">Acciones</th>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Imagen</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Acciones</th>
 
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
 
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
 
-        <!-- Acciones-->
-        <td>
-            <button id="btn-acs" type="button" class="btn btn-warning">edit</button>
-            <button id="btn-acs" type="button" class="btn btn-danger">delate</button>
-        </td>
+      <!-- Acciones-->
+      <td>
+        <button id="btn-acs" type="button" class="btn btn-warning">edit</button>
+        <button id="btn-acs" type="button" class="btn btn-danger">delate</button>
+      </td>
 
-      </tr>
+    </tr>
 
-    </tbody>
-  </table>
+  </tbody>
+</table>
 
 
- <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Agregar Producto
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- BOTON PARA AGRERGAR PRODUCTOS-->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarProdcutos">
+  Agregar un nueo producto
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="agregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Ingrese un nuevo producto:</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div [formGroup]="producto" class="modal-body">
+
+        <div class="mb-3">
+          <label class="form-label"> Ingrese el nombre del producto:</label>
+          <input class="form-control" type="text" fromControlName="nombre" placeholder="Ej: Producto color rosa">
         </div>
-        <div class="modal-body">
-          ...
+
+        <div class="mb-3">
+          <label class="form-label"> Ingrese una imagen:</label>
+          <input class="form-control" type="text" fromControlName="imagen"
+            placeholder="Ej: Ingrese el vinculo de la imagen">
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+
+        <div class="mb-3">
+          <label class="form-label"> Ingrese un texto alternativo de la imagen :</label>
+          <input class="form-control" type="text" fromControlName="alt" placeholder="Ej: Ingrese  un txto alternativo">
         </div>
+
+        <div class="mb-3">
+          <label class="form-label"> Ingrese una descrpcion:</label>
+          <input class="form-control" type="text" fromControlName="descripcion"
+            placeholder="Ej: Ingrese una descrpcion">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label"> Ingrese el precio:</label>
+          <input class="form-control" type="number" fromControlName="precio" placeholder="Ej: Ingrese un precio">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label"> Ingrese una categoria:</label>
+          <select class=" form-control" formControlName="categoria" class="form-select"></select>
+          <option selected="">Elija una opcion</option>
+          <option value="collares">Collares</option>
+          <option value="juguetes">Juguetes</option>
+          <option value="indumentaria">Indumentaria</option>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outiline-success">Guardar</button>
+        <button type="button" class="btn btn-outiline-secondary">Cancelar</button>
       </div>
     </div>
   </div>
+</div>

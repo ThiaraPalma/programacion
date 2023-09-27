@@ -12,7 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { environment } from 'src/environments/environment';
 import{AngularFireModule} from '@angular/fire/compat';// CLOUD FIRETORE
 import{AngularFireAuthModule} from '@angular/fire/compat/auth';//AUTENTIFICACION
-import{AngularFireStorageModule} from '@angular/fire/compat/storage'; //ALMACENAMIENTO DE IMAGENES
+import{AngularFireStorageModule} from '@angular/fire/compat/storage';//ALMACENAMIENTO DE IMAGENES
 
 
 @NgModule({

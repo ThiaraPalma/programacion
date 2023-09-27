@@ -5,18 +5,28 @@ import { ProductosRoutingModule } from './productos-routing.module';
 import { AdminRoutingModule } from '../admin/admin-routing.module';
 import { CardComponent } from './components/card/card.component';
 import { ProductosComponent } from './pages/productos/productos.component';
+import { JuguetesComponent } from './pages/juguetes/juguetes.component';
+import { CollaresComponent } from './pages/collares/collares.component';
+import { IndumentariaComponent } from './pages/indumentaria/indumentaria.component';
 
 
 @NgModule({
   declarations: [
     ProductosComponent,
-    CardComponent
+    CardComponent,
+    JuguetesComponent,
+    CollaresComponent,
+    IndumentariaComponent
   ],
   imports: [
     CommonModule,
     ProductosRoutingModule
   ], exports:[
-    CardComponent
+    CardComponent,
+    ProductosComponent,
+    CollaresComponent,
+    JuguetesComponent,
+    IndumentariaComponent
   ]
   
   
