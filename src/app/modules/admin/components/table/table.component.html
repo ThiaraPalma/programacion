@@ -13,19 +13,22 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr *ngFo ="let col of coleccionProductos">
       <th scope="row">1</th>
-      <td>Imagen</td>
-      <td>Nombre</td>
-      <td>Descripcion</td>
-      <td>Precio</td>
-      <td>Categoria</td> <!-- HOY-->
+      <td>
+        <img src="{{col.imagen}}" alt="{{col.alt}}">
+      </td>
+
+      <td>{{col.nombre}}</td>
+      <td>{{col.descripcion}}</td>
+      <td>{{col.precio}}</td>
+      <td>{{col.categoria}}</td> <!-- HOY-->
 
       <!-- Acciones-->
       <td>
-        <button id="btn-acs" title="Editar" type="button" class="btn btn-warning"> <mat-icon> edit</mat-icon></button>
+        <button id="btn-acs" title="Editar" type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarProducto"><mat-icon> edit</mat-icon></button>
         
-        <button id="btn-acs"  title="Eliminar" type="button" class="btn btn-danger"> <mat-icon> delate</mat-icon></button>
+        <button id="btn-acs"  title="Eliminar" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarProducto"><mat-icon> delate</mat-icon></button>
       </td>
 
     </tr>
@@ -35,7 +38,7 @@
 
 
 <!-- BOTON PARA AGRERGAR PRODUCTOS-->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarProdcutos">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarProducto">
   Agregar un nuevo producto
 </button>
 
@@ -49,7 +52,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      <div class="modal-body">
+      <div [formGroup]="producto" class="modal-body">
 
         <div class="mb-3">
           <label class="form-label"> Ingrese el nombre del producto:</label>
@@ -80,18 +83,20 @@
 
         <div class="mb-3">
           <label class="form-label"> Ingrese una categoria:</label>
-          <select class=" form-control" formControlName="categoria" class="form-select"></select>
-          <option selected="">Elija una opcion</option>
+
+          <select class=" form-control" formControlName="categoria" class="form-select">
+          <option selected >Elija una opcion</option>
           <option value="collares">Collares</option>
           <option value="juguetes">Juguetes</option>
-          <option value="indumentaria">Indumentaria</option>
+          <option value="indumentaria">Indumentaria</option> 
+        </select>
         </div>
 
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outiline-success">Guardar</button>
-        <button type="button" class="btn btn-outiline-secondary">Cancelar</button>
+        <button type="button" class="btn btn-outiline-success" data-bs-dismiss="modal" (click)="agregarProducto()">Guardar </button>
+        <button type="button" class="btn btn-outiline-secondary" data-bs-dismiss="modal">Cancelar</button>
       </div>
     </div>
   </div>

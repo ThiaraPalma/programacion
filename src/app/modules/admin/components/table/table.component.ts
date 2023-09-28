@@ -17,7 +17,7 @@ export class TableComponent {
 
   //modalVisible: boolean =false;
   // eliminarVisible:  false;
-
+  //
   producto = new FormGroup({
     nombre: new FormControl('',Validators.required),
     imagen: new FormControl('',Validators.required),
@@ -35,7 +35,25 @@ export class TableComponent {
     })
   }
 
-  async agregarProducto(){
-
+  async agregarProducto(){ //metodo para validar esos valores del producuto
+  if(this.producto.valid){
+    let nuevoProducto: Producto ={
+      idProducto: '',
+      nombre:this.producto.value.nombre!,
+      imagen:this.producto.value.imagen!,
+      alt: this.producto.value.alt!,
+      descripcion: this.producto.value.descripcion!,
+      precio: this.producto.value.precio!,
+      categoria: this.producto.value.categoria!
+    };
+    //llamamos al servicioCrud; funcion craerProducto; seteamos nuevoProducto
+    await this.servicioCrud.crearProducto(nuevoProducto)
+    .then(producto => {
+      alert("ha agregado un nuevo producto con 'exito :)");
+    })
+    .catch(error =>{
+      alert("hubi un error al cargar nuevi producto :( \n" + error);
+    })
+  }
   }
 }
