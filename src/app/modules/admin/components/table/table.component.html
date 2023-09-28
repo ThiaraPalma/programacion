@@ -1,11 +1,13 @@
 <table class="table">
   <thead>
     <tr>
+      <!--LETRA OSCURA-->
       <th scope="col">#</th>
       <th scope="col">Imagen</th>
       <th scope="col">Nombre</th>
       <th scope="col">Descripcion</th>
       <th scope="col">Precio</th>
+      <th>Categoria</th>
       <th scope="col">Acciones</th>
 
     </tr>
@@ -13,15 +15,17 @@
   <tbody>
     <tr>
       <th scope="row">1</th>
-
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td>Imagen</td>
+      <td>Nombre</td>
+      <td>Descripcion</td>
+      <td>Precio</td>
+      <td>Categoria</td> <!-- HOY-->
 
       <!-- Acciones-->
       <td>
-        <button id="btn-acs" type="button" class="btn btn-warning">edit</button>
-        <button id="btn-acs" type="button" class="btn btn-danger">delate</button>
+        <button id="btn-acs" title="Editar" type="button" class="btn btn-warning"> <mat-icon> edit</mat-icon></button>
+        
+        <button id="btn-acs"  title="Eliminar" type="button" class="btn btn-danger"> <mat-icon> delate</mat-icon></button>
       </td>
 
     </tr>
@@ -32,18 +36,20 @@
 
 <!-- BOTON PARA AGRERGAR PRODUCTOS-->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarProdcutos">
-  Agregar un nueo producto
+  Agregar un nuevo producto
 </button>
 
-<!-- Modal -->
+<!-- Modal para agregar producto -->
 <div class="modal fade" id="agregarProducto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">Ingrese un nuevo producto:</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div [formGroup]="producto" class="modal-body">
+
+      <div class="modal-body">
 
         <div class="mb-3">
           <label class="form-label"> Ingrese el nombre del producto:</label>
