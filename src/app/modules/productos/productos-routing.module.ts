@@ -9,6 +9,15 @@ import { CollaresComponent } from './pages/collares/collares.component';
 const routes: Routes = [
   {
     path: "productos", component: ProductosComponent
+  },
+  {
+    path: "collares", component: CollaresComponent
+  },
+  {
+    path: "juguetes", component: JuguetesComponent
+  },
+  {
+    path: "indumentaria", component: IndumentariaComponent
   }
 ];
 

@@ -20,13 +20,15 @@ import { IndumentariaComponent } from './pages/indumentaria/indumentaria.compone
   ],
   imports: [
     CommonModule,
-    ProductosRoutingModule
+    ProductosRoutingModule,
+    AdminRoutingModule
   ], exports:[
     CardComponent,
     ProductosComponent,
     CollaresComponent,
     JuguetesComponent,
-    IndumentariaComponent
+    IndumentariaComponent,
+    AdminRoutingModule
   ]
   
   

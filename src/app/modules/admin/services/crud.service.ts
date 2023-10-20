@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Producto } from 'src/app/models/producto';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import{map} from 'rxjs/operators' //MAPEA VALORES -> similar a la funcion de cada arreglo
+import { ProductosRoutingModule } from '../../productos/productos-routing.module';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,23 @@ export class CrudService {
     //MAP -> "mapea" o recorre la nueva informacion y la envia 
     // A -> resguarda la  nueva informacion y la envia 
      return this.productosColletion.snapshotChanges().pipe(map(action => action.map(a => a.payload.doc.data())))
+   }
+
+    //enviamos el ID del producto y la nueva informacion 
+   modificarProducto(idProducto: string, nuevaData: Producto){
+      return this.database.collection('productos').doc(idProducto).update(nuevaData);
+   }
+
+   eliminarProducto(idProducto:string){
+    return new Promise((resolve, reject) =>{
+      try{
+        const resp = this.productosColletion.doc(idProducto).delete()
+        resolve (resp)
+      } 
+      catch(error){
+        reject(error)
+      }
+    })
    }
 }
 

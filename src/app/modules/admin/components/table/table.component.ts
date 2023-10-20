@@ -56,4 +56,61 @@ export class TableComponent {
     })
   }
   }
+  //EDTAR PRODUCTO -< VINCULA AL MODAL DE EDITAR
+  mostrarEditar( productoSeleccionado : Producto){
+   this.productoSeleccionado = productoSeleccionado;
+
+   /* retomamos y enviamos los valores de ese producto seleccionado, 
+   el ID no se vuelve a enviar pporque no se modifica*/
+
+   this.producto.setValue({
+    nombre: productoSeleccionado.nombre,
+    imagen:productoSeleccionado.imagen,
+    alt: productoSeleccionado.alt,
+    descripcion: productoSeleccionado.descripcion,
+    precio: productoSeleccionado.precio,
+    categoria: productoSeleccionado.categoria
+   })
+  }
+
+  //VINCULA A BOTON "GUARDAR CAMBIOS"
+  //recibir los valores nueos que ingresemos en el formulario
+  editarProducto(){
+   let datos: Producto ={
+    idProducto: this.productoSeleccionado.idProducto,
+    //signo de exclamacion "!" -> puede recibir valores vacios al inicializar
+    nombre: this.producto.value.nombre!,
+    imagen: this.producto.value.imagen!,
+    alt: this.producto.value.alt!,
+    descripcion: this.producto.value.descripcion!,
+    precio: this.producto.value.precio!,
+    categoria: this.producto.value.categoria!
+   }
+   this.servicioCrud.modificarProducto(this.productoSeleccionado.idProducto, datos)
+   .then(producto =>{
+    alert("El producto fue modificado con exito");
+   })
+   .catch(error =>{
+    alert ("No se pudo modificar el producto \n"+ error);
+   })
+  }
+  //ELIMINAR EL PRODUCTO
+  mostrarBorrar(productosSeleccionado: Producto){ //boton  para el modal 
+   this.modalVisibleProdcuto = true;
+   this.productoSeleccionado = productosSeleccionado;
+
+  }
+
+  borrarProducto(){ //boton para eliminar definitivamente
+    this.servicioCrud.eliminarProducto(this.productoSeleccionado.idProducto)
+    
+    .then(respuesta =>{
+      alert("El producto se ha eliminado correctamente")
+    })
+    .catch(error =>{
+      alert("No se ha popido eliminar el producto: \n" + error);
+    })
+  }
+
+
 }
